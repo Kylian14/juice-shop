@@ -19,133 +19,174 @@
         "cells": [
           {
             "position": {
-              "x": 330,
-              "y": 250
+              "x": 499.9999999999991,
+              "y": 80.00000000000216
             },
             "size": {
-              "width": 112.5,
-              "height": 60
+              "width": 720,
+              "height": 500
             },
             "attrs": {
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
+              "label": {
+                "text": "DMZ"
               }
             },
             "visible": true,
-            "shape": "actor",
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "0f9ac359-4fd5-4e46-b638-198310cce6e8"
-                },
-                {
-                  "group": "right",
-                  "id": "5dfa01dd-b98d-4992-8f59-1c8bd2822da4"
-                },
-                {
-                  "group": "bottom",
-                  "id": "0e6dec0a-954d-4f6b-b14f-1657f32c52fa"
-                },
-                {
-                  "group": "left",
-                  "id": "d86c5f70-5fb2-4d6b-84d6-c50747370ea4"
-                }
-              ]
-            },
-            "id": "1f62b63e-9331-4620-9f62-9168e70cf03d",
-            "zIndex": 1,
+            "shape": "trust-boundary-box",
+            "id": "43a5ac64-1453-4040-a38d-897764243331",
+            "zIndex": -1,
             "data": {
-              "type": "tm.Actor",
-              "name": "Actor",
+              "type": "tm.BoundaryBox",
+              "name": "DMZ",
               "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
+              "isTrustBoundary": true,
               "hasOpenThreats": false,
-              "providesAuthentication": false,
-              "threats": []
+              "crossingFlows": [],
+              "containedElements": [
+                "31e0d840-6f5b-4576-afb7-409d04518ce5",
+                "4e5ef9cc-dc80-46d6-bac2-03050d45e27e",
+                "f2339e7e-b8f6-4098-9e60-c95e779e697c"
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 570,
+              "y": 145.00000000000233
             },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove",
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
+            "size": {
+              "width": 340,
+              "height": 140
+            },
+            "attrs": {
+              "label": {
+                "text": "Frontend "
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "31e0d840-6f5b-4576-afb7-409d04518ce5",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Frontend ",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            }
+          },
+          {
+            "position": {
+              "x": 909.9999999999999,
+              "y": 369.9999999999998
+            },
+            "size": {
+              "width": 210,
+              "height": 160
+            },
+            "attrs": {
+              "label": {
+                "text": "API"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "4e5ef9cc-dc80-46d6-bac2-03050d45e27e",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "API",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            }
+          },
+          {
+            "position": {
+              "x": 560,
+              "y": 400
+            },
+            "size": {
+              "width": 190,
+              "height": 140
+            },
+            "attrs": {
+              "label": {
+                "text": "DB"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "f2339e7e-b8f6-4098-9e60-c95e779e697c",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "DB",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            }
+          },
+          {
+            "position": {
+              "x": 69.99999999999986,
+              "y": 85.00000000000017
+            },
+            "size": {
+              "width": 280,
+              "height": 180
+            },
+            "attrs": {
+              "label": {
+                "text": "Internet"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "5ae91fd6-3315-4390-abaa-5c7ae95630b9",
+            "zIndex": -1,
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Internet",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            }
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": -1,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false,
+              "crossingFlows": [],
+              "containedElements": []
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "259d9ae5-4d5a-4070-82eb-94bb8bdd8eb5",
+            "source": {
+              "x": 210,
+              "y": 350
+            },
+            "target": {
+              "x": 310,
+              "y": 450
             }
           }
         ]
