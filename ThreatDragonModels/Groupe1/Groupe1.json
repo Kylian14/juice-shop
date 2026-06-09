@@ -47,112 +47,9 @@
                 "672b6023-9cd4-4f03-9871-00c82f09f57f"
               ],
               "containedElements": [
-                "31e0d840-6f5b-4576-afb7-409d04518ce5",
-                "4e5ef9cc-dc80-46d6-bac2-03050d45e27e",
-                "f2339e7e-b8f6-4098-9e60-c95e779e697c",
+                "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9",
                 "7e15a9b0-fd5d-4581-a492-45d95fce7c18",
                 "76478e05-a98b-47c4-9722-b5541a6a9ec0",
-                "0420c860-d7fc-4a51-b584-4f5303390a3a",
-                "f4d627e4-be90-484e-9907-d0d44beda003"
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 1010,
-              "y": 185.00000000000233
-            },
-            "size": {
-              "width": 340,
-              "height": 140
-            },
-            "attrs": {
-              "label": {
-                "text": "Frontend"
-              }
-            },
-            "visible": true,
-            "shape": "trust-boundary-box",
-            "zIndex": -1,
-            "id": "31e0d840-6f5b-4576-afb7-409d04518ce5",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "Frontend",
-              "description": "Sert l’UI, fait des appels API",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [
-                "91dc144a-eb90-4f4d-b84f-2b8a6e602242",
-                "672b6023-9cd4-4f03-9871-00c82f09f57f",
-                "1979c19b-25b1-4950-ae21-4a5b2ebf24ed"
-              ],
-              "containedElements": [
-                "7e15a9b0-fd5d-4581-a492-45d95fce7c18"
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 1205,
-              "y": 380
-            },
-            "size": {
-              "width": 250,
-              "height": 200
-            },
-            "attrs": {
-              "label": {
-                "text": "API REST Express"
-              }
-            },
-            "visible": true,
-            "shape": "trust-boundary-box",
-            "zIndex": -1,
-            "id": "4e5ef9cc-dc80-46d6-bac2-03050d45e27e",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "API REST Express",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [
-                "1979c19b-25b1-4950-ae21-4a5b2ebf24ed",
-                "31cd91c3-4530-44a8-afbf-a2434488604d"
-              ],
-              "containedElements": [
-                "76478e05-a98b-47c4-9722-b5541a6a9ec0"
-              ]
-            }
-          },
-          {
-            "position": {
-              "x": 805,
-              "y": 345
-            },
-            "size": {
-              "width": 350,
-              "height": 250
-            },
-            "attrs": {
-              "label": {
-                "text": "DB"
-              }
-            },
-            "visible": true,
-            "shape": "trust-boundary-box",
-            "zIndex": -1,
-            "id": "f2339e7e-b8f6-4098-9e60-c95e779e697c",
-            "data": {
-              "type": "tm.BoundaryBox",
-              "name": "DB",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [
-                "9339c20b-1fd4-4866-8d58-e530d20dfb7e",
-                "31cd91c3-4530-44a8-afbf-a2434488604d"
-              ],
-              "containedElements": [
                 "0420c860-d7fc-4a51-b584-4f5303390a3a",
                 "f4d627e4-be90-484e-9907-d0d44beda003"
               ]
@@ -194,33 +91,38 @@
             }
           },
           {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
+            "position": {
+              "x": 782,
+              "y": 365.0000000000003
+            },
+            "size": {
+              "width": 290,
+              "height": 240
+            },
+            "attrs": {
+              "label": {
+                "text": "db"
+              }
+            },
+            "visible": true,
+            "shape": "trust-boundary-box",
+            "id": "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9",
             "zIndex": -1,
-            "connector": "smooth",
             "data": {
-              "type": "tm.Boundary",
-              "name": "Trust Boundary",
+              "type": "tm.BoundaryBox",
+              "name": "db",
               "description": "",
               "isTrustBoundary": true,
               "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
-            },
-            "labels": [
-              "Trust Boundary"
-            ],
-            "id": "c5d9fa8c-9629-4cc7-a0dd-58431237ee8a",
-            "source": {
-              "x": 690,
-              "y": 90
-            },
-            "target": {
-              "x": 690,
-              "y": 670
-            },
-            "vertices": []
+              "crossingFlows": [
+                "9339c20b-1fd4-4866-8d58-e530d20dfb7e",
+                "31cd91c3-4530-44a8-afbf-a2434488604d"
+              ],
+              "containedElements": [
+                "0420c860-d7fc-4a51-b584-4f5303390a3a",
+                "f4d627e4-be90-484e-9907-d0d44beda003"
+              ]
+            }
           },
           {
             "position": {
@@ -1097,7 +999,7 @@
               "threats": [],
               "trustBoundaryIds": [
                 "43a5ac64-1453-4040-a38d-897764243331",
-                "f2339e7e-b8f6-4098-9e60-c95e779e697c"
+                "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9"
               ]
             },
             "labels": [
@@ -1146,7 +1048,6 @@
               "threats": [],
               "trustBoundaryIds": [
                 "43a5ac64-1453-4040-a38d-897764243331",
-                "31e0d840-6f5b-4576-afb7-409d04518ce5",
                 "66a13a9c-c78f-4ff1-beb2-29c99d16137f"
               ]
             },
@@ -1261,7 +1162,6 @@
               "threats": [],
               "trustBoundaryIds": [
                 "43a5ac64-1453-4040-a38d-897764243331",
-                "31e0d840-6f5b-4576-afb7-409d04518ce5",
                 "66a13a9c-c78f-4ff1-beb2-29c99d16137f"
               ]
             },
@@ -1310,10 +1210,7 @@
               "isPublicNetwork": false,
               "protocol": "",
               "threats": [],
-              "trustBoundaryIds": [
-                "31e0d840-6f5b-4576-afb7-409d04518ce5",
-                "4e5ef9cc-dc80-46d6-bac2-03050d45e27e"
-              ]
+              "trustBoundaryIds": []
             },
             "labels": [
               "HTTP"
@@ -1366,8 +1263,7 @@
               "protocol": "",
               "threats": [],
               "trustBoundaryIds": [
-                "4e5ef9cc-dc80-46d6-bac2-03050d45e27e",
-                "f2339e7e-b8f6-4098-9e60-c95e779e697c"
+                "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9"
               ]
             },
             "labels": [
