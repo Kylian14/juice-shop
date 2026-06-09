@@ -1323,7 +1323,8 @@
                 "7e15a9b0-fd5d-4581-a492-45d95fce7c18",
                 "76478e05-a98b-47c4-9722-b5541a6a9ec0",
                 "0420c860-d7fc-4a51-b584-4f5303390a3a",
-                "7a89d2fd-f47c-4826-9739-08818d93735f"
+                "7a89d2fd-f47c-4826-9739-08818d93735f",
+                "0e50df17-6c38-4dc1-9d95-5d9513059605"
               ]
             }
           },
@@ -1362,35 +1363,6 @@
             }
           },
           {
-            "shape": "trust-boundary-curve",
-            "width": 200,
-            "height": 100,
-            "zIndex": -1,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Boundary",
-              "name": "Trust Boundary",
-              "description": "",
-              "isTrustBoundary": true,
-              "hasOpenThreats": false,
-              "crossingFlows": [],
-              "containedElements": []
-            },
-            "labels": [
-              "Trust Boundary"
-            ],
-            "id": "c5d9fa8c-9629-4cc7-a0dd-58431237ee8a",
-            "source": {
-              "x": 690,
-              "y": 90
-            },
-            "target": {
-              "x": 690,
-              "y": 670
-            },
-            "vertices": []
-          },
-          {
             "position": {
               "x": 806,
               "y": 415
@@ -1406,8 +1378,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "68ab4d08-839e-4ede-8313-0372e4b46627",
             "zIndex": -1,
+            "id": "68ab4d08-839e-4ede-8313-0372e4b46627",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "DB",
@@ -2256,7 +2228,7 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Data Flow",
+              "name": "SQL request",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
@@ -2272,7 +2244,7 @@
               ]
             },
             "labels": [
-              "Data Flow"
+              "SQL request"
             ],
             "id": "31cd91c3-4530-44a8-afbf-a2434488604d",
             "source": {
@@ -2338,6 +2310,53 @@
             "vertices": []
           },
           {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": []
+            },
+            "labels": [
+              "Data Flow"
+            ],
+            "id": "d3ad5c97-dc4d-4d69-85dc-55fa9b9068b2",
+            "source": {
+              "cell": "0e50df17-6c38-4dc1-9d95-5d9513059605",
+              "port": "b23431ed-a3d6-4fac-be4b-4dd12c79b0e3"
+            },
+            "target": {
+              "cell": "76478e05-a98b-47c4-9722-b5541a6a9ec0",
+              "port": "049a4aef-915e-453e-b640-0c2cf4a171b2"
+            },
+            "vertices": []
+          },
+          {
             "position": {
               "x": 1335,
               "y": 515
@@ -2358,6 +2377,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 11,
             "ports": {
               "groups": {
                 "top": {
@@ -2441,10 +2461,129 @@
               ]
             },
             "id": "7a89d2fd-f47c-4826-9739-08818d93735f",
-            "zIndex": 11,
             "data": {
               "type": "tm.Process",
               "name": "JWT service",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1140,
+              "y": 455
+            },
+            "size": {
+              "width": 120,
+              "height": 110
+            },
+            "attrs": {
+              "text": {
+                "text": "Chiffrement \nMD5"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "f3f40a41-f92b-469a-8268-5cb09ea6a30b"
+                },
+                {
+                  "group": "right",
+                  "id": "b23431ed-a3d6-4fac-be4b-4dd12c79b0e3"
+                },
+                {
+                  "group": "bottom",
+                  "id": "580ee1bc-cda9-4d75-85de-f022a397e5a0"
+                },
+                {
+                  "group": "left",
+                  "id": "4a689f18-ad26-4037-b363-0554f8c3f63e"
+                }
+              ]
+            },
+            "id": "0e50df17-6c38-4dc1-9d95-5d9513059605",
+            "zIndex": 12,
+            "data": {
+              "type": "tm.Process",
+              "name": "Chiffrement \nMD5",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
