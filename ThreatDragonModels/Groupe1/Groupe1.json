@@ -44,7 +44,8 @@
               "crossingFlows": [
                 "9339c20b-1fd4-4866-8d58-e530d20dfb7e",
                 "91dc144a-eb90-4f4d-b84f-2b8a6e602242",
-                "672b6023-9cd4-4f03-9871-00c82f09f57f"
+                "672b6023-9cd4-4f03-9871-00c82f09f57f",
+                "631e907f-86f8-488c-acfb-35a723012e84"
               ],
               "containedElements": [
                 "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9",
@@ -81,7 +82,8 @@
               "hasOpenThreats": false,
               "crossingFlows": [
                 "91dc144a-eb90-4f4d-b84f-2b8a6e602242",
-                "672b6023-9cd4-4f03-9871-00c82f09f57f"
+                "672b6023-9cd4-4f03-9871-00c82f09f57f",
+                "631e907f-86f8-488c-acfb-35a723012e84"
               ],
               "containedElements": [
                 "7fbe6ace-675d-4b2e-94c5-51093aa86188",
@@ -106,8 +108,8 @@
             },
             "visible": true,
             "shape": "trust-boundary-box",
-            "id": "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9",
             "zIndex": -1,
+            "id": "546d6b2b-57a6-4b63-999c-f9bdc93f4cd9",
             "data": {
               "type": "tm.BoundaryBox",
               "name": "db",
@@ -1277,6 +1279,56 @@
             "target": {
               "cell": "0420c860-d7fc-4a51-b584-4f5303390a3a",
               "port": "d1fa15ae-368b-4ed4-b78f-947502ff630d"
+            },
+            "vertices": []
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": "block"
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "SMTP",
+              "description": "",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": true,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [],
+              "trustBoundaryIds": [
+                "43a5ac64-1453-4040-a38d-897764243331",
+                "66a13a9c-c78f-4ff1-beb2-29c99d16137f"
+              ]
+            },
+            "labels": [
+              "SMTP"
+            ],
+            "id": "631e907f-86f8-488c-acfb-35a723012e84",
+            "source": {
+              "cell": "9d777932-8372-482f-8bde-42d959724b76",
+              "port": "353daa86-99af-4314-83bc-c2e9b94a2a73"
+            },
+            "target": {
+              "cell": "7e15a9b0-fd5d-4581-a492-45d95fce7c18",
+              "port": "d5fa0bfe-94d6-4fe5-bef0-22ead1fc34e8"
             },
             "vertices": []
           }
