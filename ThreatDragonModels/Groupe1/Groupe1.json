@@ -1315,8 +1315,7 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "91dc144a-eb90-4f4d-b84f-2b8a6e602242",
-                "672b6023-9cd4-4f03-9871-00c82f09f57f"
+                "91dc144a-eb90-4f4d-b84f-2b8a6e602242"
               ],
               "containedElements": [
                 "68ab4d08-839e-4ede-8313-0372e4b46627",
@@ -1353,12 +1352,10 @@
               "isTrustBoundary": true,
               "hasOpenThreats": false,
               "crossingFlows": [
-                "91dc144a-eb90-4f4d-b84f-2b8a6e602242",
-                "672b6023-9cd4-4f03-9871-00c82f09f57f"
+                "91dc144a-eb90-4f4d-b84f-2b8a6e602242"
               ],
               "containedElements": [
-                "7fbe6ace-675d-4b2e-94c5-51093aa86188",
-                "6e859791-cf57-49fe-bc2d-877cde5a908c"
+                "7fbe6ace-675d-4b2e-94c5-51093aa86188"
               ]
             }
           },
@@ -1396,8 +1393,8 @@
           },
           {
             "position": {
-              "x": 140.5,
-              "y": 125.00000000000233
+              "x": 200.5,
+              "y": 320.000000000001
             },
             "size": {
               "width": 112.5,
@@ -1408,8 +1405,8 @@
                 "text": "User"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1506,9 +1503,27 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "dcd1ff3e-6288-42cd-9af4-99ab9d1194e4",
+                  "title": "Password spraying / credential stuffing non bloqués",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "`POST /rest/user/login` (`server.ts:595`) n'a ni rate-limit ni verrouillage de compte (contrairement à `/rest/user/reset-password`, `server.ts:343`). Un attaquant pulvérise un mot de passe courant (`Welcome2024!`) sur une liste d'emails, ou rejoue des couples email/mot de passe fuités, pour ouvrir une session sur un compte légitime (cf. challenge `dlpPasswordSprayingChallenge`, `routes/login.ts:64`).",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 2,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "repudiation": 0
+              }
             }
           },
           {
@@ -1642,11 +1657,11 @@
             },
             "attrs": {
               "text": {
-                "text": "API REST Express"
+                "text": "API REST Express login"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -1738,17 +1753,52 @@
             "id": "76478e05-a98b-47c4-9722-b5541a6a9ec0",
             "data": {
               "type": "tm.Process",
-              "name": "API REST Express",
+              "name": "API REST Express login",
               "description": "",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "1be36c93-d121-4498-8bb0-2fdaa959ac7d",
+                  "title": " SQL injection",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": " un attaquant anonyme envoie `email = \"' OR 1=1--\"` (ou `admin@juice-sh.op'--`) dans `POST /rest/user/login`. La requête est construite par concaténation de chaînes : `SELECT * FROM Users WHERE email = '<email>' AND password = '<hash>' ...` (`routes/login.ts:34`). Le `--` neutralise la vérification du mot de passe ; `plain: true` renvoie la première ligne (l'admin). L'attaquant reçoit un JWT valide sans connaître aucun mot de passe.\n",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                },
+                {
+                  "id": "bd18b849-ded6-428f-a9d1-c9db47710807",
+                  "title": "Brute force massif non limité sature login et base",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "l'absence de rate-limit (`server.ts:595`) permet d'envoyer en boucle des milliers de `POST /rest/user/login`. Chaque essai déclenche un `md5` + une requête SQL synchrone : un flot soutenu sature CPU et accès SQLite, dégradant le login pour les utilisateurs légitimes — sans même chercher à deviner un mot de passe.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 2,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 2,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -1876,123 +1926,6 @@
             }
           },
           {
-            "position": {
-              "x": 140.5,
-              "y": 365.00000000000233
-            },
-            "size": {
-              "width": 112.5,
-              "height": 60
-            },
-            "attrs": {
-              "text": {
-                "text": "OAuth provider"
-              },
-              "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
-                "strokeDasharray": null
-              }
-            },
-            "visible": true,
-            "shape": "actor",
-            "zIndex": 6,
-            "ports": {
-              "groups": {
-                "top": {
-                  "position": "top",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "right": {
-                  "position": "right",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "bottom": {
-                  "position": "bottom",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                },
-                "left": {
-                  "position": "left",
-                  "attrs": {
-                    "circle": {
-                      "r": 4,
-                      "magnet": true,
-                      "stroke": "#5F95FF",
-                      "strokeWidth": 1,
-                      "fill": "#fff",
-                      "style": {
-                        "visibility": "hidden"
-                      }
-                    }
-                  }
-                }
-              },
-              "items": [
-                {
-                  "group": "top",
-                  "id": "f6f8359a-770b-406d-9150-e28f8eb11460"
-                },
-                {
-                  "group": "right",
-                  "id": "7dcf94b5-3e66-4d00-9d29-30d170d5e0f8"
-                },
-                {
-                  "group": "bottom",
-                  "id": "20adf118-f691-4fb4-bd98-7e08e1f8c373"
-                },
-                {
-                  "group": "left",
-                  "id": "7c24d769-0760-4f2b-bcb0-2c4e879ee903"
-                }
-              ]
-            },
-            "id": "6e859791-cf57-49fe-bc2d-877cde5a908c",
-            "data": {
-              "type": "tm.Actor",
-              "name": "OAuth provider",
-              "description": "",
-              "isTrustBoundary": false,
-              "outOfScope": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "providesAuthentication": false,
-              "threats": []
-            }
-          },
-          {
             "shape": "flow",
             "attrs": {
               "line": {
@@ -2058,103 +1991,6 @@
                 "y": 190
               }
             ]
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": []
-            },
-            "labels": [
-              "HTTPS"
-            ],
-            "id": "3a36b4ab-e262-4690-a1ab-62c926c0f1ff",
-            "source": {
-              "cell": "7fbe6ace-675d-4b2e-94c5-51093aa86188",
-              "port": "20adf118-f691-4fb4-bd98-7e08e1f8c373"
-            },
-            "target": {
-              "cell": "6e859791-cf57-49fe-bc2d-877cde5a908c",
-              "port": "f6f8359a-770b-406d-9150-e28f8eb11460"
-            },
-            "vertices": []
-          },
-          {
-            "shape": "flow",
-            "attrs": {
-              "line": {
-                "stroke": "#333333",
-                "targetMarker": {
-                  "name": "block"
-                },
-                "sourceMarker": {
-                  "name": "block"
-                },
-                "strokeDasharray": null
-              }
-            },
-            "width": 200,
-            "height": 100,
-            "zIndex": 10,
-            "connector": "smooth",
-            "data": {
-              "type": "tm.Flow",
-              "name": "HTTPS",
-              "description": "",
-              "outOfScope": false,
-              "isTrustBoundary": false,
-              "reasonOutOfScope": "",
-              "hasOpenThreats": false,
-              "isBidirectional": true,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
-              "threats": [],
-              "trustBoundaryIds": [
-                "43a5ac64-1453-4040-a38d-897764243331",
-                "66a13a9c-c78f-4ff1-beb2-29c99d16137f"
-              ]
-            },
-            "labels": [
-              "HTTPS"
-            ],
-            "id": "672b6023-9cd4-4f03-9871-00c82f09f57f",
-            "source": {
-              "cell": "7e15a9b0-fd5d-4581-a492-45d95fce7c18",
-              "port": "d5fa0bfe-94d6-4fe5-bef0-22ead1fc34e8"
-            },
-            "target": {
-              "cell": "6e859791-cf57-49fe-bc2d-877cde5a908c",
-              "port": "7dcf94b5-3e66-4d00-9d29-30d170d5e0f8"
-            },
-            "vertices": []
           },
           {
             "shape": "flow",
@@ -2318,7 +2154,7 @@
                   "name": "block"
                 },
                 "sourceMarker": {
-                  "name": ""
+                  "name": "block"
                 },
                 "strokeDasharray": null
               }
@@ -2335,7 +2171,7 @@
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "isBidirectional": false,
+              "isBidirectional": true,
               "isEncrypted": false,
               "isPublicNetwork": false,
               "protocol": "",
@@ -2370,8 +2206,8 @@
                 "text": "JWT service"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2468,18 +2304,53 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "0c613d93-6820-4aeb-9c72-dbf325eb99a6",
+                  "title": " Le JWT renvoyé contient le hash du mot de passe",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "`afterLogin` signe l'objet utilisateur complet : `security.authorize(user)` (`routes/login.ts:23`) où `user.data` inclut le champ `password` (le hash). Le token est renvoyé tel quel dans `res.json({ authentication: { token } })` (`login.ts:26`). Le payload JWT n'est que du base64 : n'importe quel client décode le token et lit le hash MD5 du mot de passe, le rôle et l'email",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                },
+                {
+                  "id": "61c831b6-9df1-4c96-a33e-e3148ca49b5c",
+                  "title": " Elevation of Privilege — Forge d'un JWT `admin` via la clé privée RSA en dur",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "la clé privée RSA de signature des JWT est codée en dur dans le code source (`lib/insecurity.ts:23`) d'un projet open-source. Un attaquant récupère la clé, signe hors-ligne un JWT `{ data: { id, email, role: 'admin' } }` en RS256 (`authorize`, `insecurity.ts:56`) et obtient un accès administrateur complet sans jamais s'authentifier",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 5,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
             "position": {
               "x": 1140,
-              "y": 455
+              "y": 450
             },
             "size": {
               "width": 120,
@@ -2490,8 +2361,8 @@
                 "text": "Chiffrement \nMD5"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -2588,12 +2459,34 @@
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "handlesCardPayment": false,
               "handlesGoodsOrServices": false,
               "isWebApplication": false,
               "privilegeLevel": "",
-              "threats": []
+              "threats": [
+                {
+                  "id": "dac9606e-3175-4f90-9c62-c1f58ce0414c",
+                  "title": "Hash de mot de passe MD5 non salé, cassable",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "les mots de passe sont hachés en MD5 non salé : `crypto.createHash('md5')` (`lib/insecurity.ts:43`), appliqué au stockage dans `models/user.ts:77`. Si la table `Users` fuit (via S1 ou une autre injection), les mots de passe sont retrouvés en secondes par rainbow tables, et les comptes réutilisant ces mots de passe ailleurs sont compromis",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 2,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              }
             }
           }
         ]
@@ -2601,6 +2494,6 @@
     ],
     "diagramTop": 3,
     "reviewer": "",
-    "threatTop": 0
+    "threatTop": 6
   }
 }
